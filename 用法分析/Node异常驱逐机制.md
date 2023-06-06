@@ -19,7 +19,7 @@ kube-controller-manager提供了以下启动参数控制eviction：
 
 
 
-### 问题：如果Kubelet失联，节点上的容器无法Terminating无法驱逐，新的容器能产生么？（漂移能成功么?）
+### 问题：如果Kubelet失联，节点上的容器Terminating无法真正关闭，新的容器能产生么？（漂移能成功么?）
 
 - 对于Deployment，容器Terminating后，会有相应的副本马上产生，如下例，两个副本是Terminating状态。新的Pod已产生。
 
