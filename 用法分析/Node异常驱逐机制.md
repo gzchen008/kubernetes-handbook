@@ -20,3 +20,22 @@ kube-controller-manager提供了以下启动参数控制eviction：
 
 
 ### 问题：如果Kubelet失联，节点上的容器无法Terminating无法驱逐，新的容器能产生么？（漂移能成功么?）
+
+- 对于Deployment，容器Terminating后，会有相应的副本马上产生，如下例，两个副本是Terminating状态。新的Pod已产生。
+
+```
+NAME                      READY   STATUS        RESTARTS   AGE     IP        
+deploy-7fd668d948-86hpp   1/1     Terminating   0          3d19h   8.0.2.216 
+deploy-7fd668d948-cpr4c   0/1     Pending       0          3m23s   <none>    
+deploy-7fd668d948-tk4ht   0/1     Pending       0          3m23s   <none>    
+deploy-7fd668d948-wwl9n   1/1     Terminating   0          3d19h   8.0.2.214 
+```
+
+- 对于StatefulSet
+- 
+
+- 对于DaemonSet，不受影响，容器状态仍是Running状态
+
+
+### 失联恢复
+kubelet上报心跳后，Node状态即恢复。Terminating的容器真正进行删除。
