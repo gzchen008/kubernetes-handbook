@@ -43,3 +43,5 @@ alertmanager-0   1/1     Terminating   0          32d   8.0.2.120
 
 ### 失联恢复
 kubelet上报心跳后，Node状态即恢复。Terminating的容器真正进行删除。
+
+### 延伸：Drain Node的效果与Node NotReady后被Controller-Manager驱逐等同
