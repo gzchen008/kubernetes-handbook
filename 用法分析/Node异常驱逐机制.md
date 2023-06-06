@@ -31,8 +31,12 @@ deploy-7fd668d948-tk4ht   0/1     Pending       0          3m23s   <none>
 deploy-7fd668d948-wwl9n   1/1     Terminating   0          3d19h   8.0.2.214 
 ```
 
-- 对于StatefulSet
-- 
+- 对于StatefulSet，Pod状态变Terminating后，不会产生新的副本。由始致终只有一个Pod。
+
+```
+NAME             READY   STATUS        RESTARTS   AGE   IP        
+alertmanager-0   1/1     Terminating   0          32d   8.0.2.120 
+```
 
 - 对于DaemonSet，不受影响，容器状态仍是Running状态
 
